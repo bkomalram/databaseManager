@@ -1,25 +1,31 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('mysql://'+process.env.USER+':'+process.env.PASSWORD+'@'+process.env.HOST+':'+process.env.PORT+'/'+process.env.DATABASE)
-
-const User = sequelize.define('User', {
-    userName: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-  // Model attributes are defined here
-  firstName: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  lastName: {
-    type: DataTypes.STRING
-    // allowNull defaults to true
-  }
-}, {
-  // Other model options go here
-});
-
-// `sequelize.define` also returns the model
-console.log(User === sequelize.models.User); // true
-
-User.sync()
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Users extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  };
+  Users.init({
+    username: DataTypes.STRING,
+    firstName: DataTypes.STRING,
+    lastname: DataTypes.STRING,
+    dni: DataTypes.STRING,
+    userType: DataTypes.INTEGER,
+    startDate: DataTypes.DATE,
+    endDate: DataTypes.DATE,
+    status: DataTypes.INTEGER,
+    password: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'Users',
+  });
+  return Users;
+};
