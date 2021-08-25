@@ -1,6 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-//const sequelize = new Sequelize('mysql://ztechs_bk:12345@ztech-s.com:3306/ztechs_bk')
-const sequelize = new Sequelize('mysql://root:password@localhost:3306/loteriadb')
+const sequelize = new Sequelize('mysql://'+process.env.USER+':'+process.env.PASSWORD+'@'+process.env.HOST+':'+process.env.PORT+'/'+process.env.DATABASE)
 
 const User = sequelize.define('User', {
     userName: {
