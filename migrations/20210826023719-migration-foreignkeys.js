@@ -40,7 +40,7 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-     await queryInterface.removeConstraint('UserRoles', 'fkey_constraint_user_ur');
-     await queryInterface.removeConstraint('UserRoles', 'fkey_constraint_role_ur');
+     await queryInterface.removeConstraint('UsersRoles', 'fkey_constraint_user_ur');
+     await queryInterface.removeConstraint('UsersRoles', 'fkey_constraint_role_ur');
   }
 };
